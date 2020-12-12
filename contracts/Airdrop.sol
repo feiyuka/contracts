@@ -41,10 +41,10 @@ contract Airdrop {
         return totalMinted().sub(token.balanceOf(address(this)));
     }
 
-    function balanceOf() public view returns(uint256, uint256, uint256){
-          uint256 pending = totalMinted().mul(userInfo[msg.sender].quota).div(supply).sub(userInfo[msg.sender].claimed);
-          uint256 quota = userInfo[msg.sender].quota;
-          uint256 claimed = userInfo[msg.sender].claimed;
+    function balanceOf(address _address) public view returns(uint256, uint256, uint256){
+          uint256 pending = totalMinted().mul(userInfo[_address].quota).div(supply).sub(userInfo[_address].claimed);
+          uint256 quota = userInfo[_address].quota;
+          uint256 claimed = userInfo[_address].claimed;
           return (quota, claimed, pending);
     }
 
